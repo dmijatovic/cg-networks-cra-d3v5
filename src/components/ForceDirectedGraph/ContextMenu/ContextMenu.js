@@ -71,6 +71,18 @@ function ContextMenu(menu, options) {
     container.appendChild(renderLevel(menu))
   }
 
+  /**
+   * Update menu list with different items
+   * Dusan Mijatovic
+   * 2019-02-19
+   */
+  this.update = function(menuList) {
+    menu = menuList
+    var container = document.getElementById('cm_' + num)
+    container.innerHTML = ''
+    container.appendChild(renderLevel(menu))
+  }
+
   function renderLevel(level) {
     var ul_outer = document.createElement('ul')
 
