@@ -1,9 +1,12 @@
+@import "../../../styles/variables";
+
 .Toolbox {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  &-messages {
+  &-message {
     flex: 3;
+    color: $primary-color;
   }
   &-tools {
     flex: 1;

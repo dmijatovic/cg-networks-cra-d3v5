@@ -1,7 +1,17 @@
+// colors
+$primary-color: #ffa500;
+$primary-color-contrast: #262d30;
+
+$second-color: #beba39;
+$second-color-contrast: $primary-color-contrast;
+
+$third-color: #6baed6;
+$third-color-contrast: $primary-color-contrast;
+
 // Header.scss
 $header-padding: 0rem 2rem;
-$header-bg-color: orange;
-$header-color: #262d30;
+$header-bg-color: $primary-color;
+$header-color: $primary-color-contrast;
 
 //App.scss
 $body-padding: 0rem 2rem;
@@ -10,7 +20,8 @@ $body-padding: 0rem 2rem;
 $contextMenuBgColor: #f8f9fa;
 
 // ForeDirectedGraph.scss
-$node-person-color: #beba39;
-$node-product-color: #ffa500;
-$node-organization-color: #6baed6;
-$selected-node-stroke-color: #272727;
+$node-person-color: $second-color;
+$node-product-color: $primary-color;
+$node-organization-color: $third-color;
+$selected-node-stroke-color: $primary-color-contrast;
+$svg-canvas-border: 1px dashed rgba(0, 0, 0, 0.15);

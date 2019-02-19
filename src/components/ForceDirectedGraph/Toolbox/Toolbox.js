@@ -6,10 +6,10 @@ class Toolbox extends Component {
   render() {
     return (
       <nav className="Toolbox">
-        <h3 className="Toolbox-messages">
-          Placeholder for tools and messages
+        <h3 className="Toolbox-message">
+          Placeholder title / message
         </h3>
-        <div className="Toolbox-tools" />
+        <div className="Toolbox-tools">placeholder buttons</div>
       </nav>
     )
   }

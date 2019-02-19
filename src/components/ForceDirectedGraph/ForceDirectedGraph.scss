@@ -3,7 +3,7 @@
 #d3-force-graph {
   flex: 1;
   margin-bottom: 1rem;
-  border: 1px dashed rgba(0, 0, 0, 0.05);
+  border: $svg-canvas-border;
   border-radius: 4px;
 }
 
