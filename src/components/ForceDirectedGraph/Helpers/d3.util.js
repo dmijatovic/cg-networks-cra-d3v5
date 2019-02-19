@@ -106,15 +106,12 @@ export const createNodes = (svg, data, fn) => {
     .append('g')
     .attr('class', 'node-item')
     .on('mousedown', function() {
-      // debugger
       d3.select(this).attr('cursor', 'move')
     })
     .on('mouseup', function() {
-      //debugger
       d3.select(this).attr('cursor', 'default')
     })
     .on('mouseout', function() {
-      // debugger
       d3.select(this).attr('cursor', 'default')
     })
     .on('contextmenu', function(d, i) {
@@ -248,8 +245,8 @@ export function runSimulation(
 ) {
   //start simulation on tick
   sim.on('tick', function(d) {
-    let alpha = sim.alpha()
-    console.log('tick on...alpha...', alpha)
+    // let alpha = sim.alpha()
+    // console.log('tick on...alpha...', alpha)
 
     //position nodes
     svgNodes.attr('transform', d => {
@@ -283,6 +280,7 @@ export function addDragFeatureToNodes(sim, svgNodes) {
   // drag action started
   function dragstarted(d) {
     if (!d3.event.active) {
+      console.log('drag...started')
       sim.alphaTarget(0.7).restart()
       //debugger
       d.fx = d.x
@@ -297,8 +295,8 @@ export function addDragFeatureToNodes(sim, svgNodes) {
   }
   //drag action ended
   function dragended(d) {
-    console.log('drag...ended')
     if (!d3.event.active) {
+      console.log('drag...ended')
       sim.alphaTarget(0)
       //remove fixed position
       d.fx = null
