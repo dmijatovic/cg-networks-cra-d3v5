@@ -155,6 +155,7 @@ export const createNodes = (svg, data, fn) => {
       //prevent propagating event
       //to avoid firing dragged event
       console.log('node...text...clicked')
+      d3.event.preventDefault()
       d3.event.stopPropagation()
       fn.click({
         item: this,
@@ -244,23 +245,35 @@ export function runSimulation(
 ) {
   //start simulation on tick
   sim.on('tick', function(d) {
-    // let alpha = sim.alpha()
-    // console.log('tick on...alpha...', alpha)
-
-    //position nodes
-    svgNodes.attr('transform', d => {
-      //prevent node of exiting visible svg area
-      //see https://bl.ocks.org/mbostock/1129492
-      d.x = Math.max(d.radius, Math.min(width - d.radius, d.x))
-      d.y = Math.max(d.radius, Math.min(height - d.radius, d.y))
-      return `translate(${d.x},${d.y})`
-    })
-    //position links
-    svgLinks
-      .attr('x1', d => d.source.x)
-      .attr('y1', d => d.source.y)
-      .attr('x2', d => d.target.x)
-      .attr('y2', d => d.target.y)
+    try {
+      // let alpha = sim.alpha()
+      // console.log('tick on...alpha...', alpha)
+      //position nodes
+      svgNodes.attr('transform', d => {
+        //prevent node of exiting visible svg area
+        //see https://bl.ocks.org/mbostock/1129492
+        d.x = Math.max(
+          d.radius,
+          Math.min(width - d.radius, d.x)
+        )
+        d.y = Math.max(
+          d.radius,
+          Math.min(height - d.radius, d.y)
+        )
+        return `translate(${d.x},${d.y})`
+      })
+      //position links
+      svgLinks
+        .attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y)
+    } catch (e) {
+      //error in simlation
+      //investigate
+      debugger
+      console.error(e)
+    }
   })
 }
 /**
