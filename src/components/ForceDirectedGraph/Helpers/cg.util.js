@@ -129,7 +129,7 @@ export function isValidConnection(sourceType, targetType) {
   const allowedLinks = {
     person: ['product', 'organization'],
     product: ['person', 'organization'],
-    orgnization: ['person']
+    organization: ['person']
   }
   let srcAccepts = allowedLinks[sourceType]
   if (srcAccepts) {
