@@ -1,20 +1,28 @@
 // colors
-$primary-color: #ffa500;
+$primary-color: #ffbc2c;
 $primary-color-contrast: #262d30;
-
+$dark-color-1: #212121;
 $second-color: #beba39;
 $second-color-contrast: $primary-color-contrast;
-
 $third-color: #6baed6;
 $third-color-contrast: $primary-color-contrast;
 
+// box-shadows
+$box-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+$box-shadow-1-hover: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px;
+$box-shadow-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+$box-shadow-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+$box-shadow-4: 0 14px 28px rgba(0, 0, 0, 0.16), 0 10px 10px rgba(0, 0, 0, 0.08);
+$box-shadow-5: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+$box-shadow-6: 4px 4px 16px 16px rgba(0, 0, 0, 0.15);
+
 // Header.scss
-$header-padding: 0rem 2rem;
+$header-padding: 0rem 4rem;
 $header-bg-color: $primary-color;
 $header-color: $primary-color-contrast;
 
 //App.scss
-$body-padding: 0rem 2rem;
+$body-padding: 0rem 4rem;
 
 // ContextMenu.scss
 $contextMenuBgColor: #f8f9fa;
@@ -25,3 +33,4 @@ $node-product-color: $primary-color;
 $node-organization-color: $third-color;
 $selected-node-stroke-color: $primary-color-contrast;
 $svg-canvas-border: 1px dashed rgba(0, 0, 0, 0.15);
+$svg-canvas-border-2: 0.5px solid rgba(0, 0, 0, 0.15);

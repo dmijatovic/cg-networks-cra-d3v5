@@ -2,17 +2,22 @@
 
 #d3-force-graph {
   flex: 1;
-  margin-bottom: 1rem;
-  border: $svg-canvas-border;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  border: $svg-canvas-border-2;
   border-radius: 4px;
+  box-shadow: $box-shadow-4;
 }
 
 .selected-node {
   //fill: red;
-  stroke: $selected-node-stroke-color;
+  //stroke: $selected-node-stroke-color;
   stroke-dasharray: 8;
   stroke-width: 3;
   stroke-opacity: 0.5;
+  box-shadow: $box-shadow-1-hover;
 }
 
 .node-type {

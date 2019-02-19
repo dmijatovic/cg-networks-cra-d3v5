@@ -75,9 +75,11 @@ class ForceGraph extends Component {
         this.targetNode = node
         this.addLink(this.sourceNode, this.targetNode)
       } else {
+        debugger
         alert(
-          'This node cannot be connected with ',
-          this.sourceNode
+          `${node.data.name} cannot be connected with ${
+            this.sourceNode.data.name
+          }`
         )
       }
     } else {

@@ -24,18 +24,14 @@ export function getChartSize(parent) {
     let ps = window.getComputedStyle(parent, null)
     w =
       parseInt(ps.width) -
-      (parseInt(ps.marginLeft) +
-        parseInt(ps.marginRight) +
-        parseInt(ps.paddingLeft) +
+      (parseInt(ps.paddingLeft) +
         parseInt(ps.paddingRight) +
         innerMargin)
     //minimum width of 400px
     if (w < 400) w = 400
     h =
       parseInt(ps.height) -
-      (parseInt(ps.marginTop) +
-        parseInt(ps.marginBottom) +
-        parseInt(ps.paddingTop) +
+      (parseInt(ps.paddingTop) +
         parseInt(ps.paddingBottom) +
         innerMargin)
     // minimum height of 400 px
@@ -83,10 +79,6 @@ export function createLinks(svg, links, fn) {
   return svgLinks
 }
 
-// export function updateLinks(svg, links, fn){
-
-// }
-
 /**
  * Creates circle nodes in svg using d3 svg reference provided and
  * binds mouse events for provided function
@@ -102,14 +94,10 @@ export const createNodes = (svg, data, fn) => {
     .selectAll('.node-item')
     .data(data)
     .enter()
-    //append groups
     .append('g')
     .attr('class', 'node-item')
-    .on('mousedown', function() {
+    .on('mouseover', function() {
       d3.select(this).attr('cursor', 'move')
-    })
-    .on('mouseup', function() {
-      d3.select(this).attr('cursor', 'default')
     })
     .on('mouseout', function() {
       d3.select(this).attr('cursor', 'default')
@@ -129,7 +117,6 @@ export const createNodes = (svg, data, fn) => {
         index: i
       })
     })
-
   //add circles to groups
   svgNodes
     .append('circle')
@@ -142,13 +129,6 @@ export const createNodes = (svg, data, fn) => {
     .attr('class', d => {
       // debugger
       return `node-type-${d.type}`
-    })
-    .on('click', function(d, i) {
-      fn.click({
-        item: this,
-        data: d,
-        index: i
-      })
     })
 
   //add text to groups
@@ -163,6 +143,25 @@ export const createNodes = (svg, data, fn) => {
     })
     .attr('alignment-baseline', 'central')
     .text(d => `${d.label}`)
+    .on('mouseover', function() {
+      //debugger
+      d3.select(this).attr('cursor', 'crosshair')
+    })
+    .on('mouseout', function() {
+      d3.select(this).attr('cursor', 'move')
+    })
+    .on('click', function(d, i) {
+      //TO DO investigate click i.c.w. drag
+      //prevent propagating event
+      //to avoid firing dragged event
+      console.log('node...text...clicked')
+      d3.event.stopPropagation()
+      fn.click({
+        item: this,
+        data: d,
+        index: i
+      })
+    })
 
   //return complete node
   return svgNodes
