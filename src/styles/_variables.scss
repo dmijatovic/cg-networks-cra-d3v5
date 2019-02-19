@@ -6,6 +6,8 @@ $second-color: #beba39;
 $second-color-contrast: $primary-color-contrast;
 $third-color: #6baed6;
 $third-color-contrast: $primary-color-contrast;
+$highlight-color: rgba(29, 85, 29, 0.5);
+$grey-color: darkgrey;
 
 // box-shadows
 $box-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -34,3 +36,6 @@ $node-organization-color: $third-color;
 $selected-node-stroke-color: $primary-color-contrast;
 $svg-canvas-border: 1px dashed rgba(0, 0, 0, 0.15);
 $svg-canvas-border-2: 0.5px solid rgba(0, 0, 0, 0.15);
+$selected-node-stroke: $grey-color;
+$selected-node-stroke-width: 8;
+$selected-node-stroke-dasharray: 1;

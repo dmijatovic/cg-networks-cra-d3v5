@@ -29,7 +29,7 @@ class ForceGraph extends Component {
       contextmenu: this.showLinkPopUp
     })
     this.svgNodes = d3u.createNodes(this.svg, testData.nodes, {
-      click: this.selectNode,
+      select: this.selectNode,
       contextmenu: this.showNodePopUp
     })
     this.sim = d3u.createSimulation(
@@ -63,31 +63,32 @@ class ForceGraph extends Component {
 
   selectNode = node => {
     console.log('Select node...', node)
-
-    if (this.sourceNode) {
-      const {
-        data: { type: sourceType }
-      } = this.sourceNode
-      const {
-        data: { type: targetType }
-      } = node
-      if (cgu.isValidConnection(sourceType, targetType)) {
-        this.targetNode = node
-        this.addLink(this.sourceNode, this.targetNode)
-      } else {
-        debugger
-        alert(
-          `${node.data.name} cannot be connected with ${
-            this.sourceNode.data.name
-          }`
-        )
-      }
-    } else {
-      //save as source node
-      this.sourceNode = node
-      //select node
-      d3u.toggleSelectedNode(node.item)
-    }
+    //select node
+    d3u.toggleSelectedNode(node.item)
+    // if (this.sourceNode) {
+    //   const {
+    //     data: { type: sourceType }
+    //   } = this.sourceNode
+    //   const {
+    //     data: { type: targetType }
+    //   } = node
+    //   if (cgu.isValidConnection(sourceType, targetType)) {
+    //     this.targetNode = node
+    //     this.addLink(this.sourceNode, this.targetNode)
+    //   } else {
+    //     debugger
+    //     alert(
+    //       `${node.data.name} cannot be connected with ${
+    //         this.sourceNode.data.name
+    //       }`
+    //     )
+    //   }
+    // } else {
+    //   //save as source node
+    //   this.sourceNode = node
+    //   //select node
+    //   d3u.toggleSelectedNode(node.item)
+    // }
   }
   showNodePopUp = node => {
     //define context menu

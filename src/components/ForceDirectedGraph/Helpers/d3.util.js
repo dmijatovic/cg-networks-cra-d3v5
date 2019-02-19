@@ -102,6 +102,15 @@ export const createNodes = (svg, data, fn) => {
     .on('mouseout', function() {
       d3.select(this).attr('cursor', 'default')
     })
+    .on('dblclick', function(d) {
+      console.log('dblclick..node')
+      //d3.event.preventDefault()
+      //d3.event.stopPropagation()
+      fn.select({
+        item: this,
+        data: d
+      })
+    })
     .on('contextmenu', function(d, i) {
       //prevent default events
       d3.event.preventDefault()
@@ -135,34 +144,31 @@ export const createNodes = (svg, data, fn) => {
   svgNodes
     .append('text')
     .attr('class', 'node-text')
-    //.attr('stroke', 'red')
     .attr('text-anchor', 'middle')
-    .attr('font-size', d => {
-      //50% of circle radius
-      return d.radius * 0.5
-    })
     .attr('alignment-baseline', 'central')
+    // styles moved to scss file
+    // expect ones unknow in css
+    // .attr('stroke', 'red')
+    // .attr('font-size', d => {
+    //   //50% of circle radius
+    //   //return d.radius * 0.5
+    //   return '0.8rem'
+    // })
     .text(d => `${d.label}`)
-    .on('mouseover', function() {
-      //debugger
-      d3.select(this).attr('cursor', 'crosshair')
-    })
-    .on('mouseout', function() {
-      d3.select(this).attr('cursor', 'move')
-    })
-    .on('click', function(d, i) {
-      //TO DO investigate click i.c.w. drag
-      //prevent propagating event
-      //to avoid firing dragged event
-      console.log('node...text...clicked')
-      d3.event.preventDefault()
-      d3.event.stopPropagation()
-      fn.click({
-        item: this,
-        data: d,
-        index: i
-      })
-    })
+  // TOO CROWDY using different cursors and events
+  // .on('mouseover', function() {
+  //   //debugger
+  //   d3.select(this).attr('cursor', 'crosshair')
+  // })
+  // .on('mouseout', function() {
+  //   d3.select(this).attr('cursor', 'move')
+  // })
+  // .on('click', function(d, i) {
+  //   //TO DO investigate click i.c.w. drag
+  //   //prevent propagating event
+  //   //to avoid firing dragged event
+  //   console.log('node...text...clicked')
+  // })
 
   //return complete node
   return svgNodes
@@ -178,21 +184,6 @@ export const createNodes = (svg, data, fn) => {
         return simCfg.defaultNodeRadius
     }
   }
-}
-
-/**
- * Selects node by appending class selected-node
- * @param {Object} node d3 circle object
- */
-export function selectNode(node) {
-  node.classList.append('selected-node')
-}
-/**
- * Removes class selected-node from the node
- * @param {Object} node
- */
-export function deselectNode(node) {
-  node.classList.remove('selected-node')
 }
 
 /**
@@ -243,6 +234,7 @@ export function runSimulation(
   { sim, svgNodes, svgLinks },
   { width, height }
 ) {
+  let innerMargin = 4
   //start simulation on tick
   sim.on('tick', function(d) {
     try {
@@ -254,11 +246,11 @@ export function runSimulation(
         //see https://bl.ocks.org/mbostock/1129492
         d.x = Math.max(
           d.radius,
-          Math.min(width - d.radius, d.x)
+          Math.min(width - innerMargin - d.radius, d.x)
         )
         d.y = Math.max(
           d.radius,
-          Math.min(height - d.radius, d.y)
+          Math.min(height - innerMargin - d.radius, d.y)
         )
         return `translate(${d.x},${d.y})`
       })
@@ -291,26 +283,28 @@ export function addDragFeatureToNodes(sim, svgNodes) {
   )
   // drag action started
   function dragstarted(d) {
+    console.log('drag...started')
     if (!d3.event.active) {
-      console.log('drag...started')
-      sim.alphaTarget(0.7).restart()
-      //debugger
+      //it needs to restart sim here
+      //to enable dragging
+      sim.alphaTarget(0.9).restart()
       d.fx = d.x
       d.fy = d.y
     }
+    //d.fixed = true
   }
   //drag action in progress
   function dragged(d) {
+    console.log('drag...in progress')
     //reposition node
     d.fx = d3.event.x
     d.fy = d3.event.y
   }
   //drag action ended
   function dragended(d) {
+    console.log('drag...ended')
     if (!d3.event.active) {
-      console.log('drag...ended')
       sim.alphaTarget(0)
-      //remove fixed position
       d.fx = null
       d.fy = null
     }

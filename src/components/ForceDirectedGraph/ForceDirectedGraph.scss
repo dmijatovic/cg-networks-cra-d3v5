@@ -14,20 +14,29 @@
 .selected-node {
   //fill: red;
   //stroke: $selected-node-stroke-color;
-  stroke-dasharray: 8;
-  stroke-width: 3;
-  stroke-opacity: 0.5;
-  box-shadow: $box-shadow-1-hover;
+  circle {
+    stroke: $selected-node-stroke;
+    stroke-dasharray: $selected-node-stroke-dasharray;
+    stroke-width: $selected-node-stroke-width;
+  }
 }
 
 .node-type {
   &-person {
+    stroke: $grey-color;
     fill: $node-person-color;
   }
   &-product {
+    stroke: $grey-color;
     fill: $node-product-color;
   }
   &-organization {
+    stroke: $grey-color;
     fill: $node-organization-color;
   }
+}
+
+.node-text {
+  font-size: 0.8rem;
+  font-weight: 700;
 }
