@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
-  border: $svg-canvas-border-2;
+  border: $svg-canvas-border-1;
   border-radius: 2px;
   //box-shadow: $box-shadow-4;
 }
@@ -38,5 +38,5 @@
 
 .node-text {
   font-size: 0.8rem;
-  font-weight: 700;
+  //font-weight: 700;
 }

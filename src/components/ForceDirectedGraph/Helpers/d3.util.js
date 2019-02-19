@@ -90,9 +90,10 @@ export function createLinks(svg, links, fn) {
  * @param {Function} fn.contextmenu callback functions on right mouse click
  */
 export const createNodes = (svg, data, fn) => {
-  let svgNodes = svg
-    .selectAll('.node-item')
-    .data(data)
+  //collection of all nodes
+  let svgNodes = svg.selectAll('.node-item').data(data)
+  //new nodes entering collection
+  let enterNodes = svgNodes
     .enter()
     .append('g')
     .attr('class', 'node-item')
@@ -126,8 +127,14 @@ export const createNodes = (svg, data, fn) => {
         index: i
       })
     })
-  //add circles to groups
-  svgNodes
+    //merge new nodes with existing nodes
+    .merge(svgNodes)
+
+  //remove not maching nodes incl. all child elements too
+  svgNodes.exit().remove()
+
+  //add circles for new nodes
+  enterNodes
     .append('circle')
     .attr('r', d => {
       //add radius
@@ -139,39 +146,22 @@ export const createNodes = (svg, data, fn) => {
       // debugger
       return `node-type-${d.type}`
     })
+    //merge with existing circles
+    .merge(svgNodes.select('circle'))
 
   //add text to groups
-  svgNodes
+  enterNodes
     .append('text')
     .attr('class', 'node-text')
-    .attr('text-anchor', 'middle')
-    .attr('alignment-baseline', 'central')
     // styles moved to scss file
     // expect ones unknow in css
-    // .attr('stroke', 'red')
-    // .attr('font-size', d => {
-    //   //50% of circle radius
-    //   //return d.radius * 0.5
-    //   return '0.8rem'
-    // })
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'central')
     .text(d => `${d.label}`)
-  // TOO CROWDY using different cursors and events
-  // .on('mouseover', function() {
-  //   //debugger
-  //   d3.select(this).attr('cursor', 'crosshair')
-  // })
-  // .on('mouseout', function() {
-  //   d3.select(this).attr('cursor', 'move')
-  // })
-  // .on('click', function(d, i) {
-  //   //TO DO investigate click i.c.w. drag
-  //   //prevent propagating event
-  //   //to avoid firing dragged event
-  //   console.log('node...text...clicked')
-  // })
+    .merge(svgNodes.select('text'))
 
-  //return complete node
-  return svgNodes
+  //return only new nodes
+  return enterNodes
 
   function calcRadius(d) {
     switch (d.type) {
