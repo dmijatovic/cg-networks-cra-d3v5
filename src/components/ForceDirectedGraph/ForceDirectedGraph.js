@@ -7,7 +7,7 @@ import cgu from './Helpers/cg.util'
 import ContextMenu from './ContextMenu/ContextMenu'
 import Toolbox from './Toolbox/Toolbox'
 
-import './ForceGraph.scss'
+import './ForceDirectedGraph.scss'
 
 class ForceGraph extends Component {
   chartDiv = React.createRef()
@@ -63,8 +63,7 @@ class ForceGraph extends Component {
 
   selectNode = node => {
     console.log('Select node...', node)
-    //node.attr('r', 40)
-    debugger
+
     if (this.sourceNode) {
       const {
         data: { type: sourceType }
@@ -94,11 +93,12 @@ class ForceGraph extends Component {
       node,
       this.nodePopUpAction
     )
-    debugger
+
     if (this.nodePopUpMenu) {
       //update menu items
-      this.nodePopUpMenu.menu = menuItems
-      this.nodePopUpMenu.reload()
+      this.nodePopUpMenu.update(menuItems)
+      //reload does not works
+      //this.nodePopUpMenu.reload()
     } else {
       this.nodePopUpMenu = new ContextMenu(menuItems)
     }

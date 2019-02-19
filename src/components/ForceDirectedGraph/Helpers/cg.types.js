@@ -1,0 +1,5 @@
+export const ADD_NODE = 'ADD_NODE'
+export const DELETE_NODE = 'DELETE_NODE'
+export const TYPE_PERSON = 'person'
+export const TYPE_PRODUCT = 'product'
+export const TYPE_ORGANISATION = 'organisation'

@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 #d3-force-graph {
   flex: 1;
   margin-bottom: 1rem;
@@ -7,7 +9,7 @@
 
 .selected-node {
   //fill: red;
-  stroke: #393939;
+  stroke: $selected-node-stroke-color;
   stroke-dasharray: 8;
   stroke-width: 3;
   stroke-opacity: 0.5;
@@ -15,12 +17,12 @@
 
 .node-type {
   &-person {
-    fill: #beba39;
+    fill: $node-person-color;
   }
   &-product {
-    fill: #ff7c28;
+    fill: $node-product-color;
   }
   &-organization {
-    fill: #0078b0;
+    fill: $node-organization-color;
   }
 }
