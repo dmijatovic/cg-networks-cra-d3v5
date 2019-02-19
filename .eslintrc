@@ -1,0 +1,54 @@
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "plugins": ["react", "jest", "prettier"],
+  "settings": {
+    "react": {
+      "version": "16.7"
+    }
+  },
+  "env": {
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none"
+      }
+    ],
+    "no-console": "warn",
+    "no-unexpected-multiline": "warn",
+    "no-debugger": "warn",
+    "react/prop-types": [
+      1,
+      {
+        "skipUndeclared": true
+      }
+    ],
+    "prettier/prettier": [
+      "warn",
+      {
+        "tabWidth": 2,
+        "printWidth": 64,
+        "useTabs": false,
+        "semi": false,
+        "singleQuote": true,
+        "trailingComma": "none",
+        "arrowParens": "avoid",
+        "jsxBracketSameLine": true
+      }
+    ]
+  }
+}

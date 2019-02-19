@@ -1,0 +1,18 @@
+@import "../../styles/variables";
+
+.Header {
+  background-color: $header-bg-color;
+  color: $header-color;
+  padding: $header-padding;
+  display: flex;
+  justify-content: space-between;
+  &-title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    img {
+      height: 3.5rem;
+      margin-right: 1rem;
+    }
+  }
+}

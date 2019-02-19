@@ -1,0 +1,16 @@
+@import "./styles/global.scss";
+@import "./styles/variables";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  &-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    padding: $body-padding;
+  }
+}

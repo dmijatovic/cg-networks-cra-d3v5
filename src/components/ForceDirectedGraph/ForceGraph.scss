@@ -1,0 +1,26 @@
+#d3-force-graph {
+  flex: 1;
+  margin-bottom: 1rem;
+  border: 1px dashed rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.selected-node {
+  //fill: red;
+  stroke: #393939;
+  stroke-dasharray: 8;
+  stroke-width: 3;
+  stroke-opacity: 0.5;
+}
+
+.node-type {
+  &-person {
+    fill: #beba39;
+  }
+  &-product {
+    fill: #ff7c28;
+  }
+  &-organization {
+    fill: #0078b0;
+  }
+}
