@@ -38,7 +38,7 @@ class ForceGraph extends Component {
       svgSize
     )
     d3u.addDragFeatureToNodes(this.sim, this.svgNodes)
-    d3u.runSimulation(this.sim, this.svgNodes, this.svgLinks)
+    d3u.runSimulation(this, svgSize)
   }
 
   addLink = (sourceNode, targetNode) => {

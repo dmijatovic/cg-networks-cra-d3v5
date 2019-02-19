@@ -137,7 +137,10 @@ export const createNodes = (svg, data, fn) => {
   svgNodes
     .append('circle')
     .attr('r', d => {
-      return calcRadius(d)
+      //add radius
+      //debugger
+      d['radius'] = calcRadius(d)
+      return d['radius']
     })
     .attr('class', d => {
       // debugger
@@ -158,8 +161,8 @@ export const createNodes = (svg, data, fn) => {
     //.attr('stroke', 'red')
     .attr('text-anchor', 'middle')
     .attr('font-size', d => {
-      //75% of circle radius
-      return calcRadius(d) * 0.5
+      //50% of circle radius
+      return d.radius * 0.5
     })
     .attr('alignment-baseline', 'central')
     .text(d => `${d.label}`)
@@ -236,16 +239,24 @@ export function createSimulation(
  * @param {Object} sim D3 simulation object
  * @param {Array} svgNodes D3 array of svg nodes (svg group tag)
  * @param {Array} svgLinks D3 array of svg links
+ * @param {Number} width svg with - used to constrain nodes from going outside
+ * @param {Number} height svg height - used to constrain nodes from going outside
  */
-export function runSimulation(sim, svgNodes, svgLinks) {
+export function runSimulation(
+  { sim, svgNodes, svgLinks },
+  { width, height }
+) {
   //start simulation on tick
   sim.on('tick', function(d) {
     let alpha = sim.alpha()
     console.log('tick on...alpha...', alpha)
-    //debugger
-    //position circles
-    //svgNodes.attr('cx', d => d.x).attr('cy', d => d.y)
+
+    //position nodes
     svgNodes.attr('transform', d => {
+      //prevent node of exiting visible svg area
+      //see https://bl.ocks.org/mbostock/1129492
+      d.x = Math.max(d.radius, Math.min(width - d.radius, d.x))
+      d.y = Math.max(d.radius, Math.min(height - d.radius, d.y))
       return `translate(${d.x},${d.y})`
     })
     //position links
