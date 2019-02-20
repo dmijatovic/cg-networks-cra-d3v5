@@ -65,7 +65,7 @@ export function getContextMenuNode(node, fn) {
       type: ContextMenu.DIVIDER
     },
     {
-      text: 'Delete node',
+      text: `Delete ${node.data.label}`,
       icon:
         '<img class="cm-svg-icon" src="baseline-delete-24px.svg" alt="add organization"/>',
       enabled: true,

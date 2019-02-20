@@ -4,7 +4,13 @@ import './App.scss'
 import Header from './components/Header/Header'
 import ForceDirectedGraph from './components/ForceDirectedGraph/ForceDirectedGraph'
 
+import testHasura from './components/ForceDirectedGraph/Graphql/testHasura'
+
 class App extends Component {
+  testHasuraQueries() {
+    console.log('Start testing hasura')
+    testHasura()
+  }
   render() {
     return (
       <article className="App">
@@ -14,6 +20,9 @@ class App extends Component {
         </main>
       </article>
     )
+  }
+  componentDidMount() {
+    this.testHasuraQueries()
   }
 }
 
