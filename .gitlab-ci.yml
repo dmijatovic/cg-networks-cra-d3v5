@@ -1,0 +1,30 @@
+stages:
+  - build
+  - deploy
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  image: node:10.15.1
+  script:
+    - npm install
+    - npm test
+    - npm run build:prod
+  artifacts:
+    paths:
+      - dist
+
+pages:
+  stage: deploy
+  only:
+    - fe-gitlab-pages
+  image: node:10.15.1
+  script:
+    - mv dist public
+  artifacts:
+    paths:
+      - public
