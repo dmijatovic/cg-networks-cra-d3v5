@@ -119,6 +119,9 @@ class ForceGraph extends Component {
   }
   // TODO
   nodePopUpAction = action => {
+    //debugger
+    let msg = `${action.type} to ${action.node.data.label}`
+    alert(msg)
     console.log(action.type, action.node)
   }
   render() {

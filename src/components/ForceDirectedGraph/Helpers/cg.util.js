@@ -23,7 +23,7 @@ export function getContextMenuNode(node, fn) {
       events: {
         click: e => {
           fn({
-            type: 'ADD_NODE',
+            type: 'ADD_PERSON',
             node
           })
         }
@@ -37,7 +37,7 @@ export function getContextMenuNode(node, fn) {
       events: {
         click: e => {
           fn({
-            type: 'ADD_NODE',
+            type: 'ADD_PRODUCT',
             node
           })
         }
@@ -54,7 +54,7 @@ export function getContextMenuNode(node, fn) {
       events: {
         click: e => {
           fn({
-            type: 'ADD_NODE',
+            type: 'ADD_ORGANIZATION',
             node
           })
         }
