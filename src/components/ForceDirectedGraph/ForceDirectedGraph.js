@@ -121,7 +121,7 @@ class ForceGraph extends Component {
   nodePopUpAction = action => {
     //debugger
     let msg = action.type
-    if (action.type.indexOf('ADD') != -1) {
+    if (action.type.indexOf('ADD') !== -1) {
       msg += ` to ${action.node.data.label}`
     } else {
       msg += ` ${action.node.data.label}`

@@ -6,7 +6,8 @@ import { createId, createdAt, encodeData } from './gqlHelpers'
  * for use with fetch POST key query need to be added
  */
 export const gqlHasura = {
-  url: 'http://localhost:8080/v1alpha1/graphql',
+  //url: 'http://localhost:8080/v1alpha1/graphql',
+  url: 'https://cg-network-d3v5.herokuapp.com/v1alpha1/graphql',
 
   getLinksAndNodes: () => {
     return {
