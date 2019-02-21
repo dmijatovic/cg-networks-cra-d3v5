@@ -6,6 +6,7 @@
     "start": "react-scripts start",
     "dev": "BROWSER=NONE react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build:pages": "GENERATE_SOURCEMAP=false PUBLIC_URL=https://dmijatovic.gitlab.io/d3-force-react-hasura-test/ react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

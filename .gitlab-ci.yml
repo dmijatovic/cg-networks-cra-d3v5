@@ -13,7 +13,7 @@ build:
   script:
     - npm install
     - npm test
-    - npm run build
+    - npm run build:pages
   artifacts:
     paths:
       - build
