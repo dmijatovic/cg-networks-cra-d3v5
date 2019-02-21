@@ -4,6 +4,7 @@ import testData from './Graphql/testData'
 
 import d3u from './Helpers/d3.util'
 import cgu from './Helpers/cg.util'
+import cfg from './Helpers/cg.config'
 import ContextMenu from './ContextMenu/ContextMenu'
 import Toolbox from './Toolbox/Toolbox'
 
@@ -20,25 +21,33 @@ class ForceGraph extends Component {
   nodePopUpMenu = null
 
   initForce() {
-    let svgSize = d3u.getChartSize(
-      document.querySelector('#d3-force-graph')
-    )
-    this.svg = d3u.createSvg(this.chartDiv.current, svgSize)
-    this.svgLinks = d3u.createLinks(this.svg, testData.links, {
-      click: this.selectLink,
-      contextmenu: this.showLinkPopUp
-    })
-    this.svgNodes = d3u.createNodes(this.svg, testData.nodes, {
-      select: this.selectNode,
-      contextmenu: this.showNodePopUp
-    })
-    this.sim = d3u.createSimulation(
-      testData,
-      cgu.simulationCfg,
-      svgSize
-    )
-    d3u.addDragFeatureToNodes(this.sim, this.svgNodes)
-    d3u.runSimulation(this, svgSize)
+    try {
+      let svgSize = d3u.getChartSize(
+        document.querySelector('#d3-force-graph')
+      )
+      this.svg = d3u.createSvg(this.chartDiv.current, svgSize)
+      this.svgLinks = d3u.createLinks(
+        this.svg,
+        testData.links,
+        {
+          click: this.selectLink,
+          contextmenu: this.showLinkPopUp
+        }
+      )
+      this.svgNodes = d3u.createNodes(
+        this.svg,
+        testData.nodes,
+        {
+          select: this.selectNode,
+          contextmenu: this.showNodePopUp
+        }
+      )
+      this.sim = d3u.createSimulation(testData, cfg, svgSize)
+      d3u.addDragFeatureToNodes(this.sim, this.svgNodes)
+      d3u.runSimulation(this, svgSize)
+    } catch (e) {
+      console.error('Failed to load simulation', e)
+    }
   }
 
   addLink = (sourceNode, targetNode) => {

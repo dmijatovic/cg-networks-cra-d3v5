@@ -2,7 +2,7 @@
 //it needs global import
 import * as d3 from 'd3'
 
-import { simulationCfg as simCfg } from './cg.util'
+import simCfg from './cg.config'
 /**
  * Calculating chart (svg) size based on the
  * parent dimenensions. This function is used
@@ -202,7 +202,11 @@ export function createSimulation(
         .forceLink()
         .id(d => d.id)
         .links(links)
-        .distance(linkDistance)
+        .distance(d => {
+          return (
+            linkDistance + d.source.radius + d.target.radius
+          )
+        })
     )
     .force(
       'charge',
