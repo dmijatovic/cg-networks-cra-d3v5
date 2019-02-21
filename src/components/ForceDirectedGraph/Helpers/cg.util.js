@@ -138,28 +138,9 @@ export function isValidConnection(sourceType, targetType) {
     return false
   }
 }
-/**
- * Configuration object for simulation definitions
- */
-export const simulationCfg = {
-  //distance between nodes
-  linkDistance: 100,
-  //if positive the nodes attract eachother
-  //negative values repel nodes
-  chargeStrength: -50,
-  // used for organizations
-  defaultNodeRadius: 30,
-  // person node radius is based on
-  // amount of hrs * personNodeRatio
-  personNodeRatio: 1,
-  // product node radius is based on
-  // importance score * productNodeRatio
-  productNodeRatio: 1
-}
 
 export default {
   getContextMenuNode,
   getContextMenuPage,
-  isValidConnection,
-  simulationCfg
+  isValidConnection
 }
