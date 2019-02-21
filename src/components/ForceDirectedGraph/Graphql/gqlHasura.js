@@ -1,14 +1,4 @@
-import { createId, createdAt } from './utils'
-/**
- * Encode node data to base64 string
- * Different node types have different
- * data properties
- * @param {Object} data node data object
- */
-function encodeData(data) {
-  let enc = btoa(JSON.stringify(data))
-  return enc
-}
+import { createId, createdAt, encodeData } from './gqlHelpers'
 /**
  * Hasura GraphQL queries
  * based on queries construced with GraphiQL in Hasura

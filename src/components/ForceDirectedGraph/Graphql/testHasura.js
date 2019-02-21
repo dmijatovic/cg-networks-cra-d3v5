@@ -1,4 +1,4 @@
-import Hasura from './service'
+import Hasura from './svcHasura'
 
 function testHasura() {
   Hasura.getNodesAndLinks().then(data => {
