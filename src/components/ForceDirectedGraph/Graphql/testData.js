@@ -36,6 +36,13 @@ export const testData = {
       data: { hrs: 32 }
     },
     {
+      id: 'eelco',
+      type: 'person',
+      label: 'EH',
+      name: 'Eelco Hotting',
+      data: { hrs: 16 }
+    },
+    {
       id: 'nlx',
       type: 'product',
       label: 'NLX',
@@ -43,7 +50,7 @@ export const testData = {
       data: { importance: 30 }
     },
     {
-      id: 'cg-netwerk',
+      id: 'cgn',
       type: 'product',
       label: 'CGN',
       name: 'CG Network visualzation',
@@ -64,7 +71,7 @@ export const testData = {
       data: { url: 'https://vng.nl' }
     },
     {
-      id: 'haarlem',
+      id: 'geh',
       type: 'organization',
       label: 'GEH',
       name: 'Gemeente Haarlem',
@@ -74,9 +81,21 @@ export const testData = {
   links: [
     {
       id: 'link1',
-      source: 'don',
+      source: 'ronald',
       target: 'vng',
       data: { test: 'link1' }
+    },
+    {
+      id: 'link11',
+      source: 'dusan',
+      target: 'vng',
+      data: { test: 'link11' }
+    },
+    {
+      id: 'link11',
+      source: 'fabian',
+      target: 'vng',
+      data: { test: 'link11' }
     },
     {
       id: 'link2',
@@ -95,6 +114,42 @@ export const testData = {
       source: 'niels',
       target: 'vng',
       data: { test: 'link4' }
+    },
+    {
+      id: 'link5',
+      source: 'niels',
+      target: 'nlx',
+      data: { test: 'link5' }
+    },
+    {
+      id: 'link6',
+      source: 'bart',
+      target: 'nlx',
+      data: { test: 'link6' }
+    },
+    {
+      id: 'link7',
+      source: 'bart',
+      target: 'vng',
+      data: { test: 'link6' }
+    },
+    {
+      id: 'link8',
+      source: 'dusan',
+      target: 'cgn',
+      data: { test: 'link7' }
+    },
+    {
+      id: 'link9',
+      source: 'eelco',
+      target: 'vng',
+      data: { test: 'link7' }
+    },
+    {
+      id: 'link10',
+      source: 'eelco',
+      target: 'geh',
+      data: { test: 'link7' }
     }
   ]
 }
